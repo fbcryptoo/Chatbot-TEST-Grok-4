@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Benny John's NYC Chat</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #1a1a1a; /* Dark background inspired by Benny John's */
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+        }
+
+        /* Ensure the chat widget takes up the full viewport */
+        .chat-container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Style to ensure the widget is responsive and centered */
+        #anythingllm-chat-widget {
+            width: 100%;
+            height: 100%;
+            max-width: 600px; /* Constrain width for better readability */
+            max-height: 800px; /* Constrain height for better fit */
+            border: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+            border-radius: 8px; /* Rounded corners for a modern look */
+        }
+    </style>
+</head>
+<body>
+    <div class="chat-container">
+        <script
+            data-embed-id="26fbab9a-7f27-4fcf-a837-aeb081bb465b"
+            data-base-api-url="https://anythingllm.fbbrain.com/api/embed"
+            src="https://anythingllm.fbbrain.com/embed/anythingllm-chat-widget.min.js"
+            data-auto-open="true">
+        </script>
+    </div>
+</body>
+</html>
