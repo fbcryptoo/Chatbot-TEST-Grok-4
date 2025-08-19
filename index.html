@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Benny John's NYC Chat</title>
     <style>
         body {
@@ -12,29 +12,35 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: #1a1a1a; /* Dark background inspired by Benny John's */
+            background-color: #1a1a1a;
             font-family: 'Arial', sans-serif;
             overflow: hidden;
         }
 
-        /* Ensure the chat widget takes up the full viewport */
         .chat-container {
             width: 100%;
             height: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
+            padding: 10px;
         }
 
-        /* Style to ensure the widget is responsive and centered */
         #anythingllm-chat-widget {
             width: 100%;
-            height: 100%;
-            max-width: 600px; /* Constrain width for better readability */
-            max-height: 800px; /* Constrain height for better fit */
+            height: 90%; /* Adjusted for mobile to leave space for controls */
+            max-width: 400px; /* Optimized for mobile screens */
+            max-height: 700px; /* Constrained for mobile usability */
             border: none;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
-            border-radius: 8px; /* Rounded corners for a modern look */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+        }
+
+        @media (max-width: 480px) {
+            #anythingllm-chat-widget {
+                max-width: 100%; /* Full width on smaller screens */
+                height: 90vh; /* Use almost full viewport height */
+            }
         }
     </style>
 </head>
