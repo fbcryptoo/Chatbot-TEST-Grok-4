@@ -28,9 +28,9 @@
 
         #anythingllm-chat-widget {
             width: 100%;
-            height: 90%; /* Adjusted for mobile to leave space for controls */
-            max-width: 400px; /* Optimized for mobile screens */
-            max-height: 700px; /* Constrained for mobile usability */
+            height: 90%;
+            max-width: 400px;
+            max-height: 700px;
             border: none;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
             border-radius: 8px;
@@ -38,8 +38,8 @@
 
         @media (max-width: 480px) {
             #anythingllm-chat-widget {
-                max-width: 100%; /* Full width on smaller screens */
-                height: 90vh; /* Use almost full viewport height */
+                max-width: 100%;
+                height: 90vh;
             }
         }
     </style>
@@ -53,5 +53,18 @@
             data-auto-open="true">
         </script>
     </div>
+
+    <script>
+        // Fallback to force the widget to open
+        setTimeout(() => {
+            const widget = document.querySelector('#anythingllm-chat-widget');
+            if (widget && !widget.classList.contains('open')) {
+                // Attempt to trigger the open action (may depend on widget's internal implementation)
+                widget.style.display = 'block'; // Ensure it's visible
+                const openButton = document.querySelector('.anythingllm-open-button'); // Adjust selector if needed
+                if (openButton) openButton.click(); // Simulate clicking the open button
+            }
+        }, 1000); // Delay to ensure widget loads
+    </script>
 </body>
 </html>
