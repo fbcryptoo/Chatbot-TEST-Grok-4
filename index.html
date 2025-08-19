@@ -12,7 +12,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: #1a1a1a; /* Fallback dark background */
+            background-color: #1a1a1a;
             font-family: 'Arial', sans-serif;
             overflow: hidden;
         }
@@ -23,7 +23,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 20px; /* Padding to show background border */
+            padding: 10px;
         }
 
         #anythingllm-chat-widget {
@@ -34,8 +34,7 @@
             border: none;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
             border-radius: 8px;
-            display: block;
-            background-color: rgba(255, 255, 255, 0.95); /* White with slight opacity for readability */
+            display: block; /* Ensure visibility */
         }
 
         @media (max-width: 480px) {
@@ -57,25 +56,25 @@
     </div>
 
     <script>
+        // Enhanced fallback to force widget open
         document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 const widget = document.querySelector('#anythingllm-chat-widget');
                 if (widget) {
-                    widget.style.display = 'block';
+                    widget.style.display = 'block'; // Ensure widget is visible
+                    // Attempt to find and click the open button (adjust selector if needed)
                     let openButton = document.querySelector('.anythingllm-open-button') ||
                                     document.querySelector('[data-action="open"]') ||
                                     document.querySelector('button');
                     if (openButton) {
-                        openButton.click(); // Force open the widget
+                        openButton.click(); // Simulate click to open
                     } else {
-                        console.log('No open button found, attempting to force iframe display');
+                        // If no button found, try to force visibility of chat content
                         const chatFrame = widget.querySelector('iframe');
                         if (chatFrame) chatFrame.style.display = 'block';
                     }
-                } else {
-                    console.log('Widget not found in DOM');
                 }
-            }, 3000); // Increased to 3 seconds for better loading time
+            }, 2000); // Increased delay to 2 seconds for widget loading
         });
     </script>
 </body>
