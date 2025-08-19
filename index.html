@@ -34,6 +34,7 @@
             border: none;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
             border-radius: 8px;
+            display: block; /* Ensure visibility */
         }
 
         @media (max-width: 480px) {
@@ -55,16 +56,26 @@
     </div>
 
     <script>
-        // Fallback to force the widget to open
-        setTimeout(() => {
-            const widget = document.querySelector('#anythingllm-chat-widget');
-            if (widget && !widget.classList.contains('open')) {
-                // Attempt to trigger the open action (may depend on widget's internal implementation)
-                widget.style.display = 'block'; // Ensure it's visible
-                const openButton = document.querySelector('.anythingllm-open-button'); // Adjust selector if needed
-                if (openButton) openButton.click(); // Simulate clicking the open button
-            }
-        }, 1000); // Delay to ensure widget loads
+        // Enhanced fallback to force widget open
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                const widget = document.querySelector('#anythingllm-chat-widget');
+                if (widget) {
+                    widget.style.display = 'block'; // Ensure widget is visible
+                    // Attempt to find and click the open button (adjust selector if needed)
+                    let openButton = document.querySelector('.anythingllm-open-button') ||
+                                    document.querySelector('[data-action="open"]') ||
+                                    document.querySelector('button');
+                    if (openButton) {
+                        openButton.click(); // Simulate click to open
+                    } else {
+                        // If no button found, try to force visibility of chat content
+                        const chatFrame = widget.querySelector('iframe');
+                        if (chatFrame) chatFrame.style.display = 'block';
+                    }
+                }
+            }, 2000); // Increased delay to 2 seconds for widget loading
+        });
     </script>
 </body>
 </html>
