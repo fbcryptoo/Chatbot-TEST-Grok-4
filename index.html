@@ -12,7 +12,8 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: #1a1a1a;
+            background: url('https://www.bennyjohnsnyc.com/wp-content/uploads/2023/07/Dining-Room-1.jpg') no-repeat center center fixed;
+            background-size: cover;
             font-family: 'Arial', sans-serif;
             overflow: hidden;
         }
@@ -23,7 +24,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 10px;
+            padding: 20px; /* Padding on all sides to show background */
         }
 
         #anythingllm-chat-widget {
@@ -34,7 +35,8 @@
             border: none;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
             border-radius: 8px;
-            display: block; /* Ensure visibility */
+            display: block;
+            background-color: rgba(255, 255, 255, 0.95); /* Slight opacity for readability */
         }
 
         @media (max-width: 480px) {
@@ -56,25 +58,19 @@
     </div>
 
     <script>
-        // Enhanced fallback to force widget open
         document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 const widget = document.querySelector('#anythingllm-chat-widget');
                 if (widget) {
-                    widget.style.display = 'block'; // Ensure widget is visible
-                    // Attempt to find and click the open button (adjust selector if needed)
+                    widget.style.display = 'block';
                     let openButton = document.querySelector('.anythingllm-open-button') ||
                                     document.querySelector('[data-action="open"]') ||
                                     document.querySelector('button');
                     if (openButton) {
-                        openButton.click(); // Simulate click to open
-                    } else {
-                        // If no button found, try to force visibility of chat content
-                        const chatFrame = widget.querySelector('iframe');
-                        if (chatFrame) chatFrame.style.display = 'block';
+                        openButton.click();
                     }
                 }
-            }, 2000); // Increased delay to 2 seconds for widget loading
+            }, 2000);
         });
     </script>
 </body>
