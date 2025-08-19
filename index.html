@@ -12,8 +12,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background: url('https://www.bennyjohnsnyc.com/wp-content/uploads/2023/07/Dining-Room-1.jpg') no-repeat center center fixed;
-            background-size: cover;
+            background-color: #1a1a1a; /* Fallback dark background */
             font-family: 'Arial', sans-serif;
             overflow: hidden;
         }
@@ -24,7 +23,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 20px; /* Padding on all sides to show background */
+            padding: 20px; /* Padding to show background border */
         }
 
         #anythingllm-chat-widget {
@@ -36,7 +35,7 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
             border-radius: 8px;
             display: block;
-            background-color: rgba(255, 255, 255, 0.95); /* Slight opacity for readability */
+            background-color: rgba(255, 255, 255, 0.95); /* White with slight opacity for readability */
         }
 
         @media (max-width: 480px) {
@@ -67,10 +66,16 @@
                                     document.querySelector('[data-action="open"]') ||
                                     document.querySelector('button');
                     if (openButton) {
-                        openButton.click();
+                        openButton.click(); // Force open the widget
+                    } else {
+                        console.log('No open button found, attempting to force iframe display');
+                        const chatFrame = widget.querySelector('iframe');
+                        if (chatFrame) chatFrame.style.display = 'block';
                     }
+                } else {
+                    console.log('Widget not found in DOM');
                 }
-            }, 2000);
+            }, 3000); // Increased to 3 seconds for better loading time
         });
     </script>
 </body>
